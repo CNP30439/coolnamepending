@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Name Pending #30439 | FTC DECODE 2025-26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #FF8533;
+            --black: #000000;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background: var(--black);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            border-bottom: 3px solid var(--orange);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--orange);
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-contact, .nav-donate {
+            background: var(--orange);
+            color: var(--black);
+            padding: 0.7rem 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-donate {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .nav-contact:hover, .nav-donate:hover {
+            transform: scale(1.05);
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 70px;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 133, 51, 0.15) 0%, transparent 50%),
+                var(--black);
+        }
+
+        .brush-stroke {
+            position: absolute;
+            width: 120%;
+            height: 60%;
+            background: var(--orange);
+            transform: rotate(-5deg) translateY(-10%);
+            clip-path: polygon(
+                0 20%, 5% 25%, 10% 22%, 15% 28%, 20% 24%, 25% 30%, 30% 26%, 35% 32%, 40% 28%, 45% 34%,
+                50% 30%, 55% 36%, 60% 32%, 65% 38%, 70% 34%, 75% 40%, 80% 36%, 85% 42%, 90% 38%, 95% 44%,
+                100% 40%, 100% 55%, 95% 58%, 90% 54%, 85% 60%, 80% 56%, 75% 62%, 70% 58%, 65% 64%, 60% 60%,
+                55% 66%, 50% 62%, 45% 68%, 40% 64%, 35% 70%, 30% 66%, 25% 72%, 20% 68%, 15% 74%, 10% 70%,
+                5% 76%, 0 72%
+            );
+            animation: brushPulse 4s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes brushPulse {
+            0%, 100% { transform: rotate(-5deg) translateY(-10%) scale(1); }
+            50% { transform: rotate(-4deg) translateY(-8%) scale(1.02); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .team-name {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            color: #FFFFFF;
+            text-shadow: 4px 4px 0 var(--black), -2px -2px 0 var(--black);
+            animation: glitchHero 3s ease-in-out infinite;
+            margin-bottom: 0;
+        }
+
+        @keyframes glitchHero {
+            0%, 90%, 100% { transform: translate(0, 0); }
+            92% { transform: translate(-3px, 2px); }
+            94% { transform: translate(3px, -2px); }
+        }
+
+        .team-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(5rem, 20vw, 16rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            text-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5), -3px -3px 0 var(--black);
+            letter-spacing: 0.1em;
+            margin: -2rem 0 1rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: white;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        .ftc-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 6px solid var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(255, 133, 51, 0.5);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--orange);
+            letter-spacing: 0.2em;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        /* SECTIONS */
+        section {
+            position: relative;
+            padding: 8rem 2rem;
+            overflow: hidden;
+        }
+
+        .section-alt {
+            background: var(--dark-gray);
+        }
+
+        .diagonal-bg {
+            position: absolute;
+            width: 200%;
+            height: 120%;
+            background: var(--orange);
+            transform: rotate(-8deg);
+            left: -50%;
+            top: -10%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: var(--orange);
+            transform: skewY(-2deg);
+            z-index: -1;
+        }
+
+        /* STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, rgba(255, 133, 51, 0.2) 0%, rgba(255, 133, 51, 0.05) 100%);
+            border: 4px solid var(--orange);
+            padding: 3rem 2rem;
+            position: relative;
+            transform: skew(-2deg);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .stat-box:hover {
+            transform: skew(-2deg) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 133, 51, 0.4);
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            color: var(--orange);
+            line-height: 1;
+            transform: skew(2deg);
+        }
+
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 1rem;
+            transform: skew(2deg);
+        }
+
+        /* MISSION */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .mission-card {
+            background: rgba(255, 133, 51, 0.1);
+            border: 3px solid var(--orange);
+            border-left: 8px solid var(--orange);
+            padding: 3rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 133, 51, 0.3);
+        }
+
+        .mission-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .mission-card p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* TEAM PHOTO */
+        .team-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .team-photo {
+            position: relative;
+            overflow: hidden;
+            border: 6px solid var(--orange);
+            transform: rotate(-2deg);
+            box-shadow: 20px 20px 0 rgba(255, 133, 51, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .team-photo:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.1) saturate(1.2);
+        }
+
+        .team-description {
+            padding: 2rem;
+        }
+
+        .team-description h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--orange);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .team-description p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* DECODE SEASON */
+        .decode-section {
+            background: linear-gradient(135deg, rgba(255, 133, 51, 0.2), transparent);
+        }
+
+        .decode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .decode-box {
+            background: rgba(255, 133, 51, 0.1);
+            border: 3px solid var(--orange);
+            padding: 2rem;
+            border-left: 8px solid var(--orange);
+        }
+
+        .decode-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .decode-box p, .decode-box ul {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .decode-box ul {
+            list-style-position: inside;
+            margin-top: 0.5rem;
+        }
+
+        /* STRATEGY */
+        .strategy-item {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 133, 51, 0.1);
+            border-left: 8px solid var(--orange);
+        }
+
+        .strategy-item h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .strategy-item p, .strategy-item ul {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .strategy-item ul {
+            list-style-position: inside;
+            margin-top: 0.5rem;
+        }
+
+        /* SWOT */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .swot-box {
+            background: var(--dark-gray);
+            border: 3px solid var(--orange);
+            padding: 2rem;
+        }
+
+        .swot-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .swot-box ul {
+            list-style-position: inside;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* ROBOT */
+        .robot-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .robot-image {
+            position: relative;
+            overflow: hidden;
+            border: 6px solid var(--orange);
+            transform: rotate(-2deg);
+            box-shadow: 20px 20px 0 rgba(255, 133, 51, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .robot-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .robot-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.1) saturate(1.2);
+        }
+
+        .spec-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 133, 51, 0.1);
+            border-left: 6px solid var(--orange);
+        }
+
+        .spec-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .spec-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* OUTREACH */
+        .outreach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .outreach-card {
+            background: var(--dark-gray);
+            border: 3px solid var(--orange);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .outreach-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 133, 51, 0.3);
+        }
+
+        .outreach-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .outreach-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* TEAM GRID */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            background: var(--dark-gray);
+            border: 3px solid var(--orange);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 133, 51, 0.3);
+        }
+
+        .member-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .member-role {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        /* RESOURCES */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 133, 51, 0.1);
+            border: 3px solid var(--orange);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            background: rgba(255, 133, 51, 0.2);
+            transform: scale(1.05);
+        }
+
+        .resource-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .resource-card a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 2px solid var(--orange);
+            transition: all 0.3s;
+        }
+
+        .resource-card a:hover {
+            color: white;
+            border-color: white;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 133, 51, 0.2) 0%, transparent 100%), var(--dark-gray);
+            text-align: center;
+            padding: 10rem 2rem;
+        }
+
+        .cta-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            color: var(--orange);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .cta-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            padding: 1.5rem 4rem;
+            border: 4px solid var(--orange);
+            background: var(--black);
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--orange);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--black);
+            transform: scale(1.05);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: var(--black);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            padding: 4rem 2rem 2rem;
+            border-top: 4px solid var(--orange);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--orange);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-section p, .footer-section a {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.8;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 2px solid var(--dark-gray);
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--orange);
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin: 0.5rem 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .robot-showcase, .team-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .ftc-badge {
+                width: 80px;
+                height: 80px;
+                font-size: 1.5rem;
+            }
+
+            .nav-cta {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+
+        /* GRAIN TEXTURE */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                CNP <span>| FTC TEAM 30439</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#decode">SEASON</a></li>
+                <li><a href="#strategy">STRATEGY</a></li>
+                <li><a href="#robot">ROBOT</a></li>
+                <li><a href="#outreach">OUTREACH</a></li>
+                <li><a href="#team">TEAM</a></li>
+                <li><a href="#resources">RESOURCES</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="#support" class="nav-donate">SUPPORT US</a>
+                <a href="mailto:info@leaphubeducation.org" class="nav-contact">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="brush-stroke"></div>
+        <div class="ftc-badge">FIRST<br>TECH</div>
+        <div class="hero-content">
+            <h1 class="team-name">COOL NAME<br>PENDING</h1>
+            <div class="team-number">#30439</div>
+            <p class="hero-subtitle">BUILDING THE FUTURE OF ROBOTICS</p>
+        </div>
+        <div class="scroll-indicator">↓ SCROLL TO EXPLORE ↓</div>
+    </section>
+
+    <!-- STATS -->
+    <section id="about">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">OUR IMPACT</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Competitive Season</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Dedicated Members</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Reached</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Passion for Innovation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section-alt">
+        <div class="container">
+            <h2 class="section-title">OUR MISSION</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 3rem; opacity: 0.9;">Inspiring innovation through collaboration and STEM education</p>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3>EXCELLENCE</h3>
+                    <p>Pursuing the highest standards in robot design, programming, and teamwork to compete at the highest levels of FTC.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>COMMUNITY</h3>
+                    <p>Engaging with our community through outreach programs, workshops, and events that inspire the next generation.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>INNOVATION</h3>
+                    <p>Bringing fresh ideas and creative problem-solving to every challenge we face in the robotics arena.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SHOWCASE -->
+    <section>
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">A TEAM BUILT ON COLLABORATION</h2>
+            <div class="team-showcase">
+                <div class="team-photo">
+                    <img src="1.png" alt="Cool Name Pending Team at Competition">
+                </div>
+                <div class="team-description">
+                    <h3>WHO WE ARE</h3>
+                    <p>Cool Name Pending represents the best of what FIRST Tech Challenge stands for. As a rookie team from Leap Hub Education, we've embraced the learning curve with enthusiasm, dedication, and a commitment to excellence.</p>
+                    <p>Every member brings unique skills to the table—from mechanical engineering to software development, from business strategy to creative problem-solving. Together, we're more than just a robotics team; we're a community of innovators.</p>
+                    <p>A program of Leap Hub Education, a 501(c)(3) nonprofit organization (EIN #93-4119169) dedicated to empowering students through STEM education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DECODE SEASON -->
+    <section id="decode" class="decode-section">
+        <div class="container">
+            <h2 class="section-title">FTC DECODE 2025-26</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 2rem; opacity: 0.9;">Uncover the power of artifacts and unlock mysteries using STEM skills and teamwork in this archaeology-inspired challenge.</p>
+            <div class="decode-grid">
+                <div class="decode-box">
+                    <h3>THE CHALLENGE</h3>
+                    <p>DECODE challenges teams to investigate artifacts from different eras. Robots must collect, launch, and classify artifacts into goals while managing gates and creating specific patterns to maximize scoring.</p>
+                </div>
+                <div class="decode-box">
+                    <h3>GAME ELEMENTS</h3>
+                    <ul>
+                        <li>Collect purple and green artifacts</li>
+                        <li>Launch artifacts into goals</li>
+                        <li>Classify artifacts down the ramp</li>
+                        <li>Manage gates for ramp clearing</li>
+                        <li>Score overflow artifacts</li>
+                        <li>Create pattern alignments (MOTIF)</li>
+                        <li>Return to base in endgame</li>
+                    </ul>
+                </div>
+                <div class="decode-box">
+                    <h3>SCORING BREAKDOWN</h3>
+                    <p><strong>Autonomous:</strong> Leave launch line, classified/overflow artifacts, auto pattern bonus</p>
+                    <p><strong>TeleOp:</strong> Classified artifacts, overflow scoring, pattern completion, depot scoring</p>
+                    <p><strong>Endgame:</strong> Base parking for ranking points</p>
+                </div>
+                <div class="decode-box">
+                    <h3>STRATEGY FOCUS</h3>
+                    <ul>
+                        <li>Consistent intake and shooting</li>
+                        <li>Efficient gate management</li>
+                        <li>Pattern (MOTIF) alignment</li>
+                        <li>Cycle time optimization</li>
+                        <li>Alliance coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGY -->
+    <section id="strategy" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">STRATEGY</h2>
+            <div class="strategy-item">
+                <h3>PRE-GAME ALLIANCE STRATEGY</h3>
+                <p>Strong scouting team captures alliance strengths and weaknesses. Real-time data analysis enables strategic planning and helps devise optimal match strategies when partnered with alliances.</p>
+            </div>
+            <div class="strategy-item">
+                <h3>AUTONOMOUS</h3>
+                <ul>
+                    <li>Consistent robot movement from starting position</li>
+                    <li>Accurate navigation using Pedro programmed paths</li>
+                    <li>Successful scoring of game elements</li>
+                    <li>Reliable sensor-based actions</li>
+                    <li>Reduced errors through testing and tuning</li>
+                </ul>
+            </div>
+            <div class="strategy-item">
+                <h3>TELE-OP</h3>
+                <ul>
+                    <li>Smooth driver control and responsiveness</li>
+                    <li>Efficient scoring during match play</li>
+                    <li>Coordinated teamwork between Drive team and Human Player</li>
+                    <li>Quick recovery from mistakes</li>
+                    <li>Improved strategy through practice matches</li>
+                </ul>
+            </div>
+            <div class="strategy-item">
+                <h3>END GAME</h3>
+                <p>Complete parking capability for alliance and us. Maximizing points in final seconds through strategic positioning and element placement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SWOT -->
+    <section id="swot">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">SWOT ANALYSIS</h2>
+            <div class="swot-grid">
+                <div class="swot-box">
+                    <h3>STRENGTHS</h3>
+                    <ul>
+                        <li>Diversity among team members</li>
+                        <li>Strong facilities and time management</li>
+                        <li>Multi-team program experience</li>
+                        <li>Worlds and Invitational championships experience</li>
+                        <li>Improvisation and problem solving</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h3>WEAKNESSES</h3>
+                    <ul>
+                        <li>Funds for initial setup</li>
+                        <li>Experience with FTC - still developing</li>
+                        <li>Team structure changes</li>
+                        <li>Shortage of STEM industry partners</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h3>OPPORTUNITIES</h3>
+                    <ul>
+                        <li>Learn advanced robot design and programming</li>
+                        <li>Compete in qualifiers, regionals, and invitationals</li>
+                        <li>Practice teamwork and leadership</li>
+                        <li>Mentor new members and share knowledge</li>
+                        <li>Engage with community through outreach</li>
+                    </ul>
+                </div>
+                <div class="swot-box">
+                    <h3>THREATS</h3>
+                    <ul>
+                        <li>Limited build and meeting time</li>
+                        <li>Hardware failures or part shortages</li>
+                        <li>Strong competition from experienced teams</li>
+                        <li>Budget limits affecting upgrades</li>
+                        <li>Schedule conflicts with competitions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROBOT -->
+    <section id="robot" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">THE MACHINE</h2>
+            <div class="robot-showcase">
+                <div class="robot-image">
+                    <img src="8.png" alt="FTC Robot Design">
+                </div>
+                <div class="robot-specs">
+                    <div class="spec-item">
+                        <div class="spec-title">INTAKE SYSTEM</div>
+                        <div class="spec-desc">Tapered ramp with compliant surgical-tubing roller. 1620 RPM miter-gear motor for high-friction, reliable ball capture. Angled geometry centers game pieces.</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-title">TURRETED OUTTAKE</div>
+                        <div class="spec-desc">Dual 6000 RPM motors drive turret through herringbone gears. Lazy Susan bearing enables smooth, stable rotation for accurate scoring from multiple angles.</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-title">DRIVETRAIN</div>
+                        <div class="spec-desc">Mechanum-based drive with belt-driven system. GoBILDA motors with 312 rpm provide optimal balance of torque and speed. Dual-axis odometry for precise autonomous navigation.</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-title">SOFTWARE & AUTO</div>
+                        <div class="spec-desc">Custom Pedro pathing with FSM architecture. Limelight tracking and color sensing for adaptive gameplay. Constants tuned for consistent performance.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUTREACH -->
+    <section id="outreach">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">OUTREACH</h2>
+            <div class="outreach-grid">
+                <div class="outreach-card">
+                    <h3>SUMMER WORKSHOP</h3>
+                    <p>Hosted inclusive robotics workshop introducing FIRST to local youth. Hands-on activities sparked interest in STEM fields.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>COFFEE SHOP</h3>
+                    <p>Set up table at Small World Coffee selling 3D-printed items designed by team while engaging community and raising funds.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>DIWALI EVENT</h3>
+                    <p>Participated in Diwali community event selling 3D-printed products while sharing FTC information and inspiring others.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>SPECIAL ED OUTREACH</h3>
+                    <p>Team member led inclusive workshop adapting engineering concepts to support diverse learning needs.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>IT SERVE</h3>
+                    <p>Attended ITSERVE Holiday Party representing our team and secured $5,000 sponsorship to support program growth.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>ROBOCON</h3>
+                    <p>Showcased robot at RoboCon letting kids drive and learn about FTC while giving information on how to join.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>INSTAGRAM OUTREACH</h3>
+                    <p>Used Instagram to share robot progress, outreach events, and team updates. Over 10k+ views gained over 750 followers.</p>
+                </div>
+                <div class="outreach-card">
+                    <h3>TAI ROBOTICS</h3>
+                    <p>Worked with team in Libya giving feedback on their robot and designs for better chassis. Switched to second iteration turret system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team" class="section-alt">
+        <div class="container">
+            <h2 class="section-title">THE CREW</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-name">ARJUN BHATT</div>
+                    <div class="member-role">Team Captain</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">HAMZA C</div>
+                    <div class="member-role">Outreach & Software</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">AKASH</div>
+                    <div class="member-role">Strategy & Build</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">DHRUVA</div>
+                    <div class="member-role">Documentation</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">AARAV</div>
+                    <div class="member-role">Robot Design Lead</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">NAOHIRO</div>
+                    <div class="member-role">Strategy & Software</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">GEETHIKA</div>
+                    <div class="member-role">Documentation</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">AMAIRA</div>
+                    <div class="member-role">Documentation</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">RAYAN</div>
+                    <div class="member-role">Engineering Process</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">NIVAS</div>
+                    <div class="member-role">Portfolio & Finance</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">REVA V</div>
+                    <div class="member-role">Business</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">KOUSHYA</div>
+                    <div class="member-role">Design & Outreach</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-name">ADARSH</div>
+                    <div class="member-role">Game Strategy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES FOR NEW TEAMS -->
+    <section id="resources">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">RESOURCES FOR NEW TEAMS</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">Starting in FTC? Here are the essential resources that helped us and will help you build a competitive robot!</p>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>GM0 - GAME MANUAL 0</h3>
+                    <p>The ultimate guide for FTC teams. Covers everything from robot design to programming strategies.</p>
+                    <a href="https://gm0.org" target="_blank">Visit GM0.org →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>FTC DOCS</h3>
+                    <p>Official FIRST Tech Challenge documentation with game rules, robot regulations, and competition guidelines.</p>
+                    <a href="https://ftc-docs.firstinspires.org" target="_blank">Visit FTC Docs →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>GOBILDA</h3>
+                    <p>High-quality FTC parts and build system. Excellent CAD library and mechanical components.</p>
+                    <a href="https://www.gobilda.com" target="_blank">Visit goBILDA →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>REV ROBOTICS</h3>
+                    <p>Official FTC control system and parts supplier. Essential electronics and structural components.</p>
+                    <a href="https://www.revrobotics.com" target="_blank">Visit REV →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>ROAD RUNNER</h3>
+                    <p>Advanced motion planning library for FTC autonomous. Industry-standard path following.</p>
+                    <a href="https://learnroadrunner.com" target="_blank">Learn Road Runner →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>FTC DISCORD</h3>
+                    <p>Join the massive FTC community! Get help, share ideas, and connect with thousands of teams worldwide.</p>
+                    <a href="https://discord.gg/first-tech-challenge" target="_blank">Join Discord →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>ONSHAPE</h3>
+                    <p>Free cloud-based CAD for FTC teams. Design your robot anywhere with real-time collaboration.</p>
+                    <a href="https://www.onshape.com" target="_blank">Try Onshape →</a>
+                </div>
+                <div class="resource-card">
+                    <h3>CTRL ALT FTC</h3>
+                    <p>Programming tutorials and resources. Learn Java, blocks, and advanced FTC software concepts.</p>
+                    <a href="https://www.ctrlaltftc.com" target="_blank">Visit Ctrl Alt FTC →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT CTA -->
+    <section id="support" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">HELP US REACH NEW HEIGHTS</h2>
+            <p class="cta-subtitle">Your support enables our team to compete, learn, and inspire others. Every contribution helps us purchase materials, attend competitions, and expand our community outreach programs.</p>
+            <div class="cta-buttons">
+                <a href="https://leaphubeducation.org/donate" target="_blank" class="btn btn-primary">DONATE NOW</a>
+                <a href="https://leaphubeducation.org/volunteer" target="_blank" class="btn">VOLUNTEER</a>
+                <a href="mailto:info@leaphubeducation.org" class="btn">CONTACT US</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>COOL NAME PENDING</h4>
+                <p>FTC Team #30439</p>
+                <p>A program of Leap Hub Education</p>
+                <p>501(c)(3) nonprofit</p>
+                <p>EIN #93-4119169</p>
+            </div>
+            <div class="footer-section">
+                <h4>QUICK LINKS</h4>
+                <a href="#about">About Us</a>
+                <a href="#team">Our Team</a>
+                <a href="#outreach">Outreach</a>
+                <a href="#robot">Robot</a>
+                <a href="#resources">Resources</a>
+            </div>
+            <div class="footer-section">
+                <h4>GET INVOLVED</h4>
+                <a href="https://leaphubeducation.org/donate" target="_blank">Donate</a>
+                <a href="https://leaphubeducation.org/volunteer" target="_blank">Volunteer</a>
+                <a href="https://leaphubeducation.org/registration" target="_blank">Registration</a>
+                <a href="mailto:info@leaphubeducation.org">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>CONTACT</h4>
+                <p>Leap Hub Education</p>
+                <p>55 Princeton Hightstown Rd</p>
+                <p>Suite 116</p>
+                <p>Princeton Junction, NJ 08550</p>
+                <a href="tel:+16092695515">+1 609-269-5515</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">COOL NAME PENDING #30439</div>
+            <p class="footer-text">FIRST Tech Challenge | DECODE 2025-26 Season</p>
+            <p class="footer-text">© 2026 Leap Hub Education. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const brushStroke = document.querySelector('.brush-stroke');
+            if (brushStroke) {
+                brushStroke.style.transform = `rotate(-5deg) translateY(${-10 + scrolled * 0.05}%)`;
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-box, .team-member, .outreach-card, .resource-card, .mission-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
