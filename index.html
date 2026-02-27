@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cool Name Pending #30439 | FTC DECODE 2025-26</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
@@ -839,6 +840,175 @@
             pointer-events: none;
             z-index: 9999;
         }
+        /* PORTFOLIO */
+        .portfolio-section {
+            background: var(--black);
+        }
+
+        .portfolio-intro {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        .portfolio-viewer-wrap {
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .portfolio-viewer-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 4px solid var(--orange);
+            transform: rotate(-1.5deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .portfolio-frame-shell {
+            position: relative;
+            z-index: 1;
+            border: 4px solid var(--orange);
+            box-shadow: 16px 16px 0 rgba(255,133,51,0.25);
+            overflow: hidden;
+        }
+
+        .portfolio-chrome {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #111;
+            border-bottom: 3px solid var(--orange);
+            padding: 0.75rem 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-chrome-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: var(--orange);
+            letter-spacing: 0.12em;
+        }
+
+        .portfolio-chrome-sub {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            letter-spacing: 0.08em;
+        }
+
+        .portfolio-chrome-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .portfolio-btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 1.2rem;
+            border: 2px solid var(--orange);
+            background: transparent;
+            color: var(--orange);
+            cursor: pointer;
+            transition: all 0.25s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .portfolio-btn:hover, .portfolio-btn.solid {
+            background: var(--orange);
+            color: var(--black);
+        }
+
+        .portfolio-btn.solid:hover {
+            background: transparent;
+            color: var(--orange);
+        }
+
+        .portfolio-iframe {
+            display: block;
+            width: 100%;
+            height: 75vh;
+            min-height: 500px;
+            border: none;
+            background: #222;
+        }
+
+        .portfolio-footer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: #111;
+            border-top: 2px solid rgba(255,133,51,0.25);
+            font-size: 0.95rem;
+            opacity: 0.65;
+            letter-spacing: 0.06em;
+            gap: 0.4rem;
+        }
+
+        .portfolio-footer-bar span { color: var(--orange); }
+
+        .portfolio-fs-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.97);
+            z-index: 99999;
+            flex-direction: column;
+        }
+
+        .portfolio-fs-overlay.active { display: flex; }
+
+        .portfolio-fs-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--orange);
+            background: #000;
+            flex-shrink: 0;
+        }
+
+        .portfolio-fs-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            color: var(--orange);
+            letter-spacing: 0.15em;
+        }
+
+        .portfolio-fs-close {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.12em;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--orange);
+            background: transparent;
+            color: var(--orange);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .portfolio-fs-close:hover {
+            background: var(--orange);
+            color: var(--black);
+        }
+
+        .portfolio-fs-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #1a1a1a;
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-iframe { height: 60vh; }
+        }
     </style>
 </head>
 <body>
@@ -857,6 +1027,7 @@
                 <li><a href="#outreach">OUTREACH</a></li>
                 <li><a href="#team">TEAM</a></li>
                 <li><a href="#resources">RESOURCES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
             </ul>
             <div class="nav-cta">
                 <a href="#support" class="nav-donate">SUPPORT US</a>
@@ -1192,8 +1363,8 @@
                     <div class="member-role">Business</div>
                 </div>
                 <div class="team-member">
-                    <div class="member-name">KOUSHYA</div>
-                    <div class="member-role">Design & Outreach</div>
+                    <div class="member-name">ADVAITH</div>
+                    <div class="member-role">Software</div>
                 </div>
                 <div class="team-member">
                     <div class="member-name">ADARSH</div>
@@ -1254,6 +1425,52 @@
         </div>
     </section>
 
+    
+    <section id="portfolio" class="portfolio-section">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">ENGINEERING PORTFOLIO</h2>
+            <p class="portfolio-intro">Our full engineering portfolio documenting the design process, build journey, software architecture, and lessons learned throughout the DECODE 2025-26 season.</p>
+            <div class="portfolio-viewer-wrap">
+                <div class="portfolio-frame-shell">
+                    <div class="portfolio-chrome">
+                        <div>
+                            <div class="portfolio-chrome-label">CNP #30439 — Engineering Portfolio</div>
+                            <div class="portfolio-chrome-sub">FTC DECODE 2025-26 Season</div>
+                        </div>
+                        <div class="portfolio-chrome-actions">
+                            <button class="portfolio-btn" onclick="openPortfolioFS()">⛶ FULLSCREEN</button>
+                            <a class="portfolio-btn solid" href="https://drive.google.com/uc?export=download&id=1CAyKoMPc7o27PmoUww9OYCCE6aDSRzIe" target="_blank">↓ DOWNLOAD PDF</a>
+                        </div>
+                    </div>
+                    <iframe
+                        class="portfolio-iframe"
+                        src="https://drive.google.com/file/d/1CAyKoMPc7o27PmoUww9OYCCE6aDSRzIe/preview"
+                        allow="autoplay"
+                        title="CNP Engineering Portfolio 2025-26">
+                    </iframe>
+                    <div class="portfolio-footer-bar">
+                        Use <span>← →</span> arrows inside the viewer to flip pages · click <span>⛶ FULLSCREEN</span> for best experience
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN OVERLAY -->
+    <div class="portfolio-fs-overlay" id="portfolioFS">
+        <div class="portfolio-fs-bar">
+            <div class="portfolio-fs-label">CNP #30439 — Engineering Portfolio 2025-26</div>
+            <button class="portfolio-fs-close" onclick="closePortfolioFS()">✕ CLOSE</button>
+        </div>
+        <iframe
+            class="portfolio-fs-iframe"
+            src="https://drive.google.com/file/d/1CAyKoMPc7o27PmoUww9OYCCE6aDSRzIe/preview"
+            allow="autoplay"
+            title="CNP Engineering Portfolio Fullscreen">
+        </iframe>
+    </div>
+    
     <!-- SUPPORT CTA -->
     <section id="support" class="cta-section">
         <div class="container">
@@ -1350,6 +1567,18 @@
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
+         function openPortfolioFS() {
+            document.getElementById('portfolioFS').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closePortfolioFS() {
+            document.getElementById('portfolioFS').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closePortfolioFS();
+        });
+        
     </script>
 </body>
 </html>
