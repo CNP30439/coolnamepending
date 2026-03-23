@@ -27,13 +27,14 @@
         .brush-stroke { position: absolute; width: 120%; height: 60%; background: var(--orange); transform: rotate(-5deg) translateY(-10%); clip-path: polygon(0 20%,5% 25%,10% 22%,15% 28%,20% 24%,25% 30%,30% 26%,35% 32%,40% 28%,45% 34%,50% 30%,55% 36%,60% 32%,65% 38%,70% 34%,75% 40%,80% 36%,85% 42%,90% 38%,95% 44%,100% 40%,100% 55%,95% 58%,90% 54%,85% 60%,80% 56%,75% 62%,70% 58%,65% 64%,60% 60%,55% 66%,50% 62%,45% 68%,40% 64%,35% 70%,30% 66%,25% 72%,20% 68%,15% 74%,10% 70%,5% 76%,0 72%); animation: brushPulse 4s ease-in-out infinite; z-index: 1; }
         @keyframes brushPulse { 0%,100%{transform:rotate(-5deg) translateY(-10%) scale(1)} 50%{transform:rotate(-4deg) translateY(-8%) scale(1.02)} }
         .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; }
-        .hero-logo { width: 80px; height: 80px; margin: 0 auto 1.5rem; display: block; filter: drop-shadow(0 0 20px rgba(255,133,51,0.6)); }
         .team-name { font-family: 'Anton', sans-serif; font-size: clamp(4rem,15vw,12rem); font-weight: 900; letter-spacing: -0.02em; line-height: 0.9; color: #fff; text-shadow: 4px 4px 0 var(--black),-2px -2px 0 var(--black); animation: glitchHero 3s ease-in-out infinite; margin-bottom: 0; }
         @keyframes glitchHero { 0%,90%,100%{transform:translate(0,0)} 92%{transform:translate(-3px,2px)} 94%{transform:translate(3px,-2px)} }
         .team-number { font-family: 'Bebas Neue', sans-serif; font-size: clamp(5rem,20vw,16rem); font-weight: 700; color: #fff; text-shadow: 6px 6px 0 rgba(0,0,0,0.5),-3px -3px 0 var(--black); letter-spacing: 0.1em; margin: -2rem 0 1rem; }
         .hero-subtitle { font-family: 'Oswald', sans-serif; font-size: clamp(1.2rem,3vw,2rem); color: white; font-weight: 400; letter-spacing: 0.1em; opacity: 0.9; margin-top: 1rem; }
         .hero-worlds-badge { display: inline-block; margin-top: 1.5rem; background: var(--orange); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.2em; padding: 0.6rem 2rem; box-shadow: 0 0 40px rgba(255,133,51,0.6); }
-        .ftc-badge { position: absolute; top: 2rem; right: 2rem; width: 120px; height: 120px; background: white; border: 6px solid var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); font-weight: bold; z-index: 10; box-shadow: 0 10px 40px rgba(255,133,51,0.5); }
+        .ftc-badge-wrap { position: absolute; top: 2rem; right: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; z-index: 10; }
+        .ftc-badge { width: 120px; height: 120px; background: white; border: 6px solid var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); font-weight: bold; box-shadow: 0 10px 40px rgba(255,133,51,0.5); }
+        .hero-logo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--orange); box-shadow: 0 0 20px rgba(255,133,51,0.6); display: block; }
         .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 10; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 0.2em; animation: bounce 2s ease-in-out infinite; }
         @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-20px)} }
         section { position: relative; padding: 8rem 2rem; overflow: hidden; }
@@ -190,9 +191,11 @@
 
     <section class="hero" id="home">
         <div class="brush-stroke"></div>
-        <div class="ftc-badge">FIRST<br>TECH</div>
-        <div class="hero-content">
+        <div class="ftc-badge-wrap">
+            <div class="ftc-badge">FIRST<br>TECH</div>
             <img src="Logo.png" alt="Cool Name Pending Logo" class="hero-logo">
+        </div>
+        <div class="hero-content">
             <h1 class="team-name">COOL NAME<br>PENDING</h1>
             <div class="team-number">#30439</div>
             <p class="hero-subtitle">BUILDING THE FUTURE OF ROBOTICS</p>
@@ -413,7 +416,7 @@
                             <div class="vexiq-form-chrome-label">CONTACT — COOL NAME FOUND</div>
                             <div class="vexiq-form-chrome-sub">VexIQ Team Recruitment 2025-26</div>
                         </div>
-                        <iframe class="vexiq-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSckSknTEtmKqdowaa7/viewform?embedded=true" title="Cool Name Found VexIQ Interest Form">Loading form...</iframe>
+                        <iframe class="vexiq-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSeDE6vKglrWhddyquK_fzQWJiys6NNLeqMJLwPMwDz1AGobmg/viewform?embedded=true" title="Cool Name Found VexIQ Interest Form">Loading form...</iframe>
                     </div>
                 </div>
             </div>
