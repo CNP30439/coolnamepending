@@ -12,9 +12,19 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --orange: #FF8533; --black: #000000; --dark-gray: #1a1a1a; }
         body { font-family: 'Oswald', sans-serif; background: var(--black); color: white; overflow-x: hidden; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.98); border-bottom: 3px solid var(--orange); padding: 1rem 2rem; z-index: 1000; backdrop-filter: blur(10px); }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--black); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #FF8533 0%, #FF6B00 50%, #FF8533 100%); }
+        ::-webkit-scrollbar-thumb:hover { background: #FF6B00; }
+        html { scrollbar-width: thin; scrollbar-color: #FF8533 #000; }
+
+        nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.98); border-bottom: 3px solid var(--orange); padding: 1rem 2rem; z-index: 1000; backdrop-filter: blur(10px); transition: padding 0.3s ease; }
+        nav.scrolled { padding: 0.5rem 2rem; }
         .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); letter-spacing: 0.1em; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); letter-spacing: 0.1em; display: flex; align-items: center; gap: 0.5rem; transition: font-size 0.3s; }
+        nav.scrolled .nav-logo { font-size: 1.5rem; }
         .nav-logo span { font-size: 1rem; opacity: 0.7; }
         .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
         .nav-links a { color: white; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; transition: color 0.3s; padding: 0.5rem 0; border-bottom: 2px solid transparent; }
@@ -23,6 +33,7 @@
         .nav-contact, .nav-donate { background: var(--orange); color: var(--black); padding: 0.7rem 1.5rem; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; border: none; cursor: pointer; letter-spacing: 0.1em; transition: all 0.3s; text-decoration: none; font-weight: bold; }
         .nav-donate { background: transparent; color: var(--orange); border: 2px solid var(--orange); }
         .nav-contact:hover, .nav-donate:hover { transform: scale(1.05); }
+
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 70px; background: radial-gradient(circle at 20% 50%, rgba(255,133,51,0.15) 0%, transparent 50%), var(--black); }
         .brush-stroke { position: absolute; width: 120%; height: 60%; background: var(--orange); transform: rotate(-5deg) translateY(-10%); clip-path: polygon(0 20%,5% 25%,10% 22%,15% 28%,20% 24%,25% 30%,30% 26%,35% 32%,40% 28%,45% 34%,50% 30%,55% 36%,60% 32%,65% 38%,70% 34%,75% 40%,80% 36%,85% 42%,90% 38%,95% 44%,100% 40%,100% 55%,95% 58%,90% 54%,85% 60%,80% 56%,75% 62%,70% 58%,65% 64%,60% 60%,55% 66%,50% 62%,45% 68%,40% 64%,35% 70%,30% 66%,25% 72%,20% 68%,15% 74%,10% 70%,5% 76%,0 72%); animation: brushPulse 4s ease-in-out infinite; z-index: 1; }
         @keyframes brushPulse { 0%,100%{transform:rotate(-5deg) translateY(-10%) scale(1)} 50%{transform:rotate(-4deg) translateY(-8%) scale(1.02)} }
@@ -37,26 +48,39 @@
         .hero-logo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--orange); box-shadow: 0 0 20px rgba(255,133,51,0.6); display: block; }
         .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); z-index: 10; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 0.2em; animation: bounce 2s ease-in-out infinite; }
         @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-20px)} }
+
         section { position: relative; padding: 8rem 2rem; overflow: hidden; }
         .section-alt { background: var(--dark-gray); }
         .diagonal-bg { position: absolute; width: 200%; height: 120%; background: var(--orange); transform: rotate(-8deg); left: -50%; top: -10%; z-index: 0; opacity: 0.1; }
         .container { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+
         .section-title { font-family: 'Anton', sans-serif; font-size: clamp(3rem,8vw,7rem); font-weight: 900; color: var(--orange); text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 3rem; position: relative; display: inline-block; }
         .section-title::before { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 15px; background: var(--orange); transform: skewY(-2deg); z-index: -1; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 0; height: 15px; background: rgba(255,133,51,0.25); transform: skewY(-2deg); transition: width 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s; z-index: -2; }
+        .section-title.vis::after { width: 100%; }
+
+        /* MARQUEE */
         .awards-banner { background: linear-gradient(135deg,rgba(255,133,51,0.15),rgba(255,133,51,0.05)); border: 3px solid var(--orange); border-left: 10px solid var(--orange); padding: 2.5rem 3rem; margin-bottom: 4rem; }
         .awards-banner h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
-        .awards-list { display: flex; flex-wrap: wrap; gap: 1rem; }
-        .award-tag { background: var(--orange); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; padding: 0.5rem 1.2rem; }
+        .marquee-wrap { overflow: hidden; width: 100%; }
+        .marquee-track { display: flex; gap: 1.5rem; align-items: center; width: max-content; animation: marqueeScroll 22s linear infinite; }
+        .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+        @keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+        .award-tag { background: var(--orange); color: var(--black); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; padding: 0.5rem 1.2rem; white-space: nowrap; }
+        .award-sep { color: var(--orange); opacity: 0.35; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; }
+
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 3rem; margin-top: 4rem; }
-        .stat-box { background: linear-gradient(135deg,rgba(255,133,51,0.2) 0%,rgba(255,133,51,0.05) 100%); border: 4px solid var(--orange); padding: 3rem 2rem; position: relative; transform: skew(-2deg); transition: all 0.3s ease; text-align: center; }
+        .stat-box { background: linear-gradient(135deg,rgba(255,133,51,0.2) 0%,rgba(255,133,51,0.05) 100%); border: 4px solid var(--orange); padding: 3rem 2rem; position: relative; transform: skew(-2deg); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; }
         .stat-box:hover { transform: skew(-2deg) scale(1.05); box-shadow: 0 20px 60px rgba(255,133,51,0.4); }
         .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 5rem; color: var(--orange); line-height: 1; transform: skew(2deg); }
         .stat-label { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1rem; transform: skew(2deg); }
+
         .mission-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 3rem; margin-top: 4rem; }
-        .mission-card { background: rgba(255,133,51,0.1); border: 3px solid var(--orange); border-left: 8px solid var(--orange); padding: 3rem 2rem; transition: all 0.3s; }
+        .mission-card { background: rgba(255,133,51,0.1); border: 3px solid var(--orange); border-left: 8px solid var(--orange); padding: 3rem 2rem; transition: transform 0.3s, box-shadow 0.3s; }
         .mission-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,133,51,0.3); }
         .mission-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange); margin-bottom: 1rem; letter-spacing: 0.1em; }
         .mission-card p { font-size: 1.2rem; line-height: 1.7; opacity: 0.9; }
+
         .team-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
         .team-photo { position: relative; overflow: hidden; border: 6px solid var(--orange); transform: rotate(-2deg); box-shadow: 20px 20px 0 rgba(255,133,51,0.3); transition: all 0.4s ease; }
         .team-photo:hover { transform: rotate(0deg) scale(1.05); }
@@ -64,20 +88,25 @@
         .team-description { padding: 2rem; }
         .team-description h3 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--orange); margin-bottom: 2rem; letter-spacing: 0.1em; }
         .team-description p { font-size: 1.2rem; line-height: 1.8; opacity: 0.9; margin-bottom: 1.5rem; }
+
         .decode-section { background: linear-gradient(135deg,rgba(255,133,51,0.2),transparent); }
         .decode-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; margin-top: 2rem; }
         .decode-box { background: rgba(255,133,51,0.1); border: 3px solid var(--orange); padding: 2rem; border-left: 8px solid var(--orange); }
         .decode-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 1rem; letter-spacing: 0.1em; }
         .decode-box p,.decode-box ul { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
         .decode-box ul { list-style-position: inside; margin-top: 0.5rem; }
-        .strategy-item { margin-bottom: 3rem; padding: 2rem; background: rgba(255,133,51,0.1); border-left: 8px solid var(--orange); }
+
+        .strategy-item { margin-bottom: 3rem; padding: 2rem; background: rgba(255,133,51,0.1); border-left: 8px solid var(--orange); transition: border-left-width 0.2s ease, padding-left 0.2s ease; }
+        .strategy-item:hover { border-left-width: 12px; padding-left: 1.6rem; }
         .strategy-item h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange); margin-bottom: 1rem; letter-spacing: 0.1em; }
         .strategy-item p,.strategy-item ul { font-size: 1.1rem; line-height: 1.7; opacity: 0.9; }
         .strategy-item ul { list-style-position: inside; margin-top: 0.5rem; }
+
         .swot-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2rem; margin-top: 3rem; }
         .swot-box { background: var(--dark-gray); border: 3px solid var(--orange); padding: 2rem; }
         .swot-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 1rem; letter-spacing: 0.1em; }
         .swot-box ul { list-style-position: inside; font-size: 1.1rem; line-height: 1.8; }
+
         .robot-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 4rem; }
         .robot-image { position: relative; overflow: hidden; border: 6px solid var(--orange); transform: rotate(-2deg); box-shadow: 20px 20px 0 rgba(255,133,51,0.3); transition: all 0.4s ease; }
         .robot-image:hover { transform: rotate(0deg) scale(1.05); }
@@ -85,23 +114,27 @@
         .spec-item { margin-bottom: 2rem; padding: 1.5rem; background: rgba(255,133,51,0.1); border-left: 6px solid var(--orange); }
         .spec-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 0.5rem; letter-spacing: 0.1em; }
         .spec-desc { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
+
         .outreach-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); gap: 2rem; margin-top: 3rem; }
-        .outreach-card { background: var(--dark-gray); border: 3px solid var(--orange); padding: 2rem; transition: all 0.3s; }
+        .outreach-card { background: var(--dark-gray); border: 3px solid var(--orange); padding: 2rem; transition: transform 0.3s, box-shadow 0.3s; }
         .outreach-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,133,51,0.3); }
         .outreach-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 1rem; letter-spacing: 0.1em; }
         .outreach-card p { font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
+
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 2rem; margin-top: 4rem; }
-        .team-member { background: var(--dark-gray); border: 3px solid var(--orange); padding: 2rem 1.5rem; text-align: center; transition: all 0.3s ease; }
+        .team-member { background: var(--dark-gray); border: 3px solid var(--orange); padding: 2rem 1.5rem; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
         .team-member:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,133,51,0.3); }
         .member-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); margin-bottom: 0.5rem; letter-spacing: 0.1em; }
         .member-role { font-size: 1rem; opacity: 0.8; font-weight: 600; }
+
         .resources-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 2rem; margin-top: 3rem; }
-        .resource-card { background: rgba(255,133,51,0.1); border: 3px solid var(--orange); padding: 2rem; transition: all 0.3s; }
+        .resource-card { background: rgba(255,133,51,0.1); border: 3px solid var(--orange); padding: 2rem; transition: background 0.3s, transform 0.3s; }
         .resource-card:hover { background: rgba(255,133,51,0.2); transform: scale(1.05); }
         .resource-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 1rem; }
         .resource-card p { margin-bottom: 1rem; opacity: 0.9; }
         .resource-card a { color: var(--orange); text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--orange); transition: all 0.3s; }
         .resource-card a:hover { color: white; border-color: white; }
+
         .portfolio-section { background: var(--black); }
         .portfolio-intro { font-size: 1.4rem; opacity: 0.9; margin-bottom: 3rem; max-width: 700px; }
         .portfolio-viewer-wrap { position: relative; max-width: 960px; margin: 0 auto; }
@@ -124,6 +157,8 @@
         .portfolio-fs-close { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.12em; padding: 0.5rem 1.5rem; border: 2px solid var(--orange); background: transparent; color: var(--orange); cursor: pointer; transition: all 0.25s; }
         .portfolio-fs-close:hover { background: var(--orange); color: var(--black); }
         .portfolio-fs-iframe { flex: 1; width: 100%; border: none; background: #1a1a1a; }
+
+        /* CNF SECTION */
         .vexiq-section { background: var(--dark-gray); }
         .vexiq-intro { font-size: 1.4rem; opacity: 0.9; margin-bottom: 3rem; max-width: 700px; }
         .vexiq-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
@@ -138,6 +173,30 @@
         .vexiq-form-chrome-label { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--orange); letter-spacing: 0.12em; }
         .vexiq-form-chrome-sub { font-size: 0.85rem; opacity: 0.5; letter-spacing: 0.06em; }
         .vexiq-iframe { display: block; width: 100%; height: 700px; border: none; background: #fff; }
+
+        /* FORGE ALLY */
+        .forge-section { background: var(--black); position: relative; overflow: hidden; }
+        .forge-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+        .forge-text h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+        .forge-text p { font-size: 1.15rem; line-height: 1.8; opacity: 0.9; margin-bottom: 1.5rem; }
+        .forge-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+        .forge-pillar { padding: 1rem 1.2rem; background: rgba(255,133,51,0.08); border-left: 5px solid var(--orange); transition: background 0.3s, transform 0.3s; }
+        .forge-pillar:hover { background: rgba(255,133,51,0.15); transform: translateX(4px); }
+        .forge-pillar strong { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--orange); letter-spacing: 0.08em; display: block; margin-bottom: 0.2rem; }
+        .forge-pillar span { font-size: 0.95rem; opacity: 0.75; }
+        .forge-visual { position: relative; }
+        .forge-visual::before { content: ''; position: absolute; inset: -12px; border: 4px solid var(--orange); transform: rotate(1.5deg); pointer-events: none; }
+        .forge-card { background: linear-gradient(135deg, rgba(255,133,51,0.15), rgba(255,133,51,0.03)); border: 4px solid var(--orange); padding: 3rem 2.5rem; box-shadow: 16px 16px 0 rgba(255,133,51,0.2); position: relative; z-index: 1; }
+        .forge-card-label { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.25em; color: var(--orange); opacity: 0.6; margin-bottom: 1rem; }
+        .forge-card-title { font-family: 'Anton', sans-serif; font-size: 4rem; color: white; line-height: 0.9; margin-bottom: 1.5rem; }
+        .forge-card-sub { font-size: 1rem; opacity: 0.7; margin-bottom: 2rem; line-height: 1.6; }
+        .forge-stats { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .forge-stat { text-align: center; }
+        .forge-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--orange); display: block; line-height: 1; }
+        .forge-stat-lbl { font-size: 0.8rem; opacity: 0.6; letter-spacing: 0.05em; }
+        .forge-link { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.15em; padding: 0.8rem 2rem; border: 3px solid var(--orange); background: var(--orange); color: var(--black); text-decoration: none; display: inline-block; transition: all 0.3s; }
+        .forge-link:hover { background: transparent; color: var(--orange); }
+
         .cta-section { background: linear-gradient(135deg,rgba(255,133,51,0.2) 0%,transparent 100%),var(--dark-gray); text-align: center; padding: 10rem 2rem; }
         .cta-title { font-family: 'Anton', sans-serif; font-size: clamp(3rem,10vw,8rem); color: var(--orange); margin-bottom: 2rem; text-transform: uppercase; }
         .cta-subtitle { font-size: 1.5rem; margin-bottom: 3rem; opacity: 0.9; }
@@ -147,6 +206,7 @@
         .btn:hover { color: var(--black); transform: scale(1.05); }
         .btn:hover::before { left: 0; }
         .btn-primary { background: var(--orange); color: var(--black); }
+
         footer { background: var(--black); padding: 4rem 2rem 2rem; border-top: 4px solid var(--orange); }
         .footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 3rem; margin-bottom: 3rem; }
         .footer-section h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--orange); margin-bottom: 1.5rem; letter-spacing: 0.1em; }
@@ -155,11 +215,16 @@
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 2px solid var(--dark-gray); }
         .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--orange); letter-spacing: 0.2em; margin-bottom: 1rem; }
         .footer-text { font-size: 0.9rem; opacity: 0.6; margin: 0.5rem 0; }
+
+        /* CURSOR GLOW */
+        .cursor-glow { position: fixed; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, rgba(255,133,51,0.055) 0%, transparent 70%); pointer-events: none; z-index: 0; transform: translate(-50%,-50%); }
+
         @media (max-width: 968px) {
-            .robot-showcase,.team-showcase,.vexiq-layout { grid-template-columns: 1fr; }
+            .robot-showcase,.team-showcase,.vexiq-layout,.forge-inner,.forge-pillars { grid-template-columns: 1fr; }
             .swot-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .ftc-badge { width: 80px; height: 80px; font-size: 1.5rem; }
+            .hero-logo { width: 50px; height: 50px; }
             .nav-cta { flex-direction: column; width: 100%; margin-top: 1rem; }
         }
         @media (max-width: 600px) { .portfolio-iframe { height: 60vh; } }
@@ -180,11 +245,12 @@
                 <li><a href="#team">TEAM</a></li>
                 <li><a href="#resources">RESOURCES</a></li>
                 <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#join-vexiq">JOIN VEXIQ</a></li>
+                <li><a href="#join-cnf">JOIN COOL NAME FOUND</a></li>
+                <li><a href="#forge-ally">FORGE ALLY</a></li>
             </ul>
             <div class="nav-cta">
                 <a href="#support" class="nav-donate">SUPPORT US</a>
-                <a href="mailto:info@leaphubeducation.org" class="nav-contact">CONTACT</a>
+                <a href="mailto:coolnamepending.ftc@leaphubeducation.org" class="nav-contact">CONTACT</a>
             </div>
         </div>
     </nav>
@@ -210,11 +276,25 @@
             <h2 class="section-title">OUR IMPACT</h2>
             <div class="awards-banner">
                 <h3>AWARD-WINNING SEASON</h3>
-                <div class="awards-list">
-                    <span class="award-tag">INSPIRE 2 — LEAGUE MEET 3</span>
-                    <span class="award-tag">INSPIRE 1 — QUALIFIERS</span>
-                    <span class="award-tag">INSPIRE 1 — STATE CHAMPIONSHIPS</span>
-                    <span class="award-tag">WORLD CHAMPIONSHIPS BOUND</span>
+                <div class="marquee-wrap">
+                    <div class="marquee-track">
+                        <span class="award-tag">INSPIRE 2 &mdash; LEAGUE MEET 3</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">INSPIRE 1 &mdash; QUALIFIERS</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">INSPIRE 1 &mdash; STATE CHAMPIONSHIPS</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">WORLD CHAMPIONSHIPS BOUND</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">INSPIRE 2 &mdash; LEAGUE MEET 3</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">INSPIRE 1 &mdash; QUALIFIERS</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">INSPIRE 1 &mdash; STATE CHAMPIONSHIPS</span>
+                        <span class="award-sep">&mdash;</span>
+                        <span class="award-tag">WORLD CHAMPIONSHIPS BOUND</span>
+                        <span class="award-sep">&mdash;</span>
+                    </div>
                 </div>
             </div>
             <div class="stats-grid">
@@ -247,7 +327,7 @@
                 <div class="team-description">
                     <h3>WHO WE ARE</h3>
                     <p>Cool Name Pending represents the best of what FIRST Tech Challenge stands for. As a rookie team from Leap Hub Education, we've embraced the learning curve with enthusiasm, dedication, and a commitment to excellence.</p>
-                    <p>Every member brings unique skills to the table—from mechanical engineering to software development, from business strategy to creative problem-solving. Together, we're more than just a robotics team; we're a community of innovators.</p>
+                    <p>Every member brings unique skills to the table&mdash;from mechanical engineering to software development, from business strategy to creative problem-solving. Together, we're more than just a robotics team; we're a community of innovators.</p>
                     <p>A program of Leap Hub Education, a 501(c)(3) nonprofit organization (EIN #93-4119169) dedicated to empowering students through STEM education.</p>
                 </div>
             </div>
@@ -299,7 +379,7 @@
                     <div class="spec-item"><div class="spec-title">INTAKE SYSTEM</div><div class="spec-desc">Tapered ramp with compliant surgical-tubing roller. 1620 RPM miter-gear motor for high-friction, reliable ball capture. Angled geometry centers game pieces.</div></div>
                     <div class="spec-item"><div class="spec-title">TURRETED OUTTAKE</div><div class="spec-desc">Dual 6000 RPM motors drive turret through herringbone gears. Lazy Susan bearing enables smooth, stable rotation for accurate scoring from multiple angles.</div></div>
                     <div class="spec-item"><div class="spec-title">DRIVETRAIN</div><div class="spec-desc">Mechanum-based drive with belt-driven system. GoBILDA motors with 312 rpm provide optimal balance of torque and speed. Dual-axis odometry for precise autonomous navigation.</div></div>
-                    <div class="spec-item"><div class="spec-title">SOFTWARE & AUTO</div><div class="spec-desc">Custom Pedro pathing with FSM architecture. Limelight tracking and color sensing for adaptive gameplay. Constants tuned for consistent performance.</div></div>
+                    <div class="spec-item"><div class="spec-title">SOFTWARE &amp; AUTO</div><div class="spec-desc">Custom Pedro pathing with FSM architecture. Limelight tracking and color sensing for adaptive gameplay. Constants tuned for consistent performance.</div></div>
                 </div>
             </div>
         </div>
@@ -327,17 +407,17 @@
             <h2 class="section-title">THE CREW</h2>
             <div class="team-grid">
                 <div class="team-member"><div class="member-name">ARJUN BHATT</div><div class="member-role">Team Captain</div></div>
-                <div class="team-member"><div class="member-name">HAMZA C</div><div class="member-role">Outreach & Software</div></div>
-                <div class="team-member"><div class="member-name">AKASH</div><div class="member-role">Strategy & Build</div></div>
+                <div class="team-member"><div class="member-name">HAMZA C</div><div class="member-role">Outreach &amp; Software</div></div>
+                <div class="team-member"><div class="member-name">AKASH</div><div class="member-role">Strategy &amp; Build</div></div>
                 <div class="team-member"><div class="member-name">DHRUVA</div><div class="member-role">Documentation</div></div>
                 <div class="team-member"><div class="member-name">AARAV</div><div class="member-role">Robot Design Lead</div></div>
-                <div class="team-member"><div class="member-name">NAOHIRO</div><div class="member-role">Strategy & Software</div></div>
+                <div class="team-member"><div class="member-name">NAOHIRO</div><div class="member-role">Strategy &amp; Software</div></div>
                 <div class="team-member"><div class="member-name">GEETHIKA</div><div class="member-role">Documentation</div></div>
                 <div class="team-member"><div class="member-name">AMAIRA</div><div class="member-role">Documentation</div></div>
                 <div class="team-member"><div class="member-name">RAYAN</div><div class="member-role">Engineering Process</div></div>
-                <div class="team-member"><div class="member-name">NIVAS</div><div class="member-role">Portfolio & Finance</div></div>
+                <div class="team-member"><div class="member-name">NIVAS</div><div class="member-role">Portfolio &amp; Finance</div></div>
                 <div class="team-member"><div class="member-name">REVA V</div><div class="member-role">Business</div></div>
-                <div class="team-member"><div class="member-name">ADVAITH</div><div class="member-role">Software & Strategy</div></div>
+                <div class="team-member"><div class="member-name">ADVAITH</div><div class="member-role">Software &amp; Strategy</div></div>
                 <div class="team-member"><div class="member-name">ADARSH</div><div class="member-role">Game Strategy</div></div>
                 <div class="team-member"><div class="member-name">MYRA</div><div class="member-role">Sustain + Reach Lead</div></div>
                 <div class="team-member"><div class="member-name">SAMYUKTHA</div><div class="member-role">Connect Lead</div></div>
@@ -372,7 +452,7 @@
                 <div class="portfolio-frame-shell">
                     <div class="portfolio-chrome">
                         <div>
-                            <div class="portfolio-chrome-label">CNP #30439 — Engineering Portfolio</div>
+                            <div class="portfolio-chrome-label">CNP #30439 &mdash; Engineering Portfolio</div>
                             <div class="portfolio-chrome-sub">FTC DECODE 2025-26 Season</div>
                         </div>
                         <div class="portfolio-chrome-actions">
@@ -389,34 +469,69 @@
 
     <div class="portfolio-fs-overlay" id="portfolioFS">
         <div class="portfolio-fs-bar">
-            <div class="portfolio-fs-label">CNP #30439 — Engineering Portfolio 2025-26</div>
+            <div class="portfolio-fs-label">CNP #30439 &mdash; Engineering Portfolio 2025-26</div>
             <button class="portfolio-fs-close" onclick="closePortfolioFS()">X CLOSE</button>
         </div>
         <iframe class="portfolio-fs-iframe" src="https://drive.google.com/file/d/1CAyKoMPc7o27PmoUww9OYCCE6aDSRzIe/preview" allow="autoplay" title="CNP Engineering Portfolio Fullscreen"></iframe>
     </div>
 
-    <section id="join-vexiq" class="vexiq-section">
+    <section id="join-cnf" class="vexiq-section">
         <div class="diagonal-bg"></div>
         <div class="container">
             <h2 class="section-title">JOIN COOL NAME FOUND</h2>
-            <p class="vexiq-intro">We are launching a brand new VexIQ team — Cool Name Found. If you are interested in joining, fill out the form below and we will be in touch.</p>
+            <p class="vexiq-intro">Cool Name Found is a new FTC team started by Cool Name Pending, open to students interested in competitive robotics. Based out of Leap Hub Education &mdash; a 501(c)(3) nonprofit located at 55 Princeton Hightstown Road, Princeton Junction &mdash; members will have access to the resources, mentorship, and experience that come with being part of an established robotics program. Fill out the form below to apply.</p>
             <div class="vexiq-layout">
                 <div class="vexiq-info">
-                    <h3>WHAT IS VEXIQ?</h3>
-                    <p>VEX IQ is a robotics competition program for elementary and middle school students that focuses on building and programming robots using a snap-together system. It is beginner-friendly, highly collaborative, and a great first step into competitive robotics.</p>
-                    <p>Cool Name Found will be based out of Leap Hub Education and guided by the experience of our FTC team. Members will learn engineering design, programming, and teamwork in a supportive environment.</p>
+                    <h3>WHAT IS FTC?</h3>
+                    <p>FIRST Tech Challenge is a competitive robotics program where students design, build, and program robots to compete in an annual game challenge. It is one of the most recognized STEM competition programs in the world, combining engineering, strategy, and teamwork.</p>
+                    <p>Cool Name Found is started by Cool Name Pending &mdash; members will benefit from an established program with real competition experience from day one.</p>
                     <div class="vexiq-detail"><strong>TEAM NAME</strong>Cool Name Found</div>
-                    <div class="vexiq-detail"><strong>PROGRAM</strong>VEX IQ — through Leap Hub Education</div>
-                    <div class="vexiq-detail"><strong>WHO CAN JOIN</strong>ELEMENTARY-MIDDLE SCHOOL STUDENTS</div>
-                    <div class="vexiq-detail"><strong>CONTACT</strong>info@leaphubeducation.org</div>
+                    <div class="vexiq-detail"><strong>PROGRAM</strong>FIRST Tech Challenge &mdash; through Leap Hub Education</div>
+                    <div class="vexiq-detail"><strong>LOCATION</strong>55 Princeton Hightstown Rd, Princeton Junction, NJ</div>
+                    <div class="vexiq-detail"><strong>WHO CAN JOIN</strong>Students interested in competitive robotics</div>
+                    <div class="vexiq-detail"><strong>CONTACT</strong>coolnamepending.ftc@leaphubeducation.org</div>
                 </div>
                 <div class="vexiq-form-wrap">
                     <div class="vexiq-form-shell">
                         <div class="vexiq-form-chrome">
-                            <div class="vexiq-form-chrome-label">CONTACT — COOL NAME FOUND</div>
-                            <div class="vexiq-form-chrome-sub">VexIQ Team Recruitment 2025-26</div>
+                            <div class="vexiq-form-chrome-label">CONTACT &mdash; COOL NAME FOUND</div>
+                            <div class="vexiq-form-chrome-sub">FTC Team Recruitment</div>
                         </div>
-                        <iframe class="vexiq-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSeDE6vKglrWhddyquK_fzQWJiys6NNLeqMJLwPMwDz1AGobmg/viewform?embedded=true" title="Cool Name Found VexIQ Interest Form">Loading form...</iframe>
+                        <iframe class="vexiq-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSeDE6vKglrWhddyquK_fzQWJiys6NNLeqMJLwPMwDz1AGobmg/viewform?embedded=true" title="Cool Name Found FTC Interest Form">Loading form...</iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="forge-ally" class="forge-section">
+        <div class="diagonal-bg"></div>
+        <div class="container">
+            <h2 class="section-title">FORGE ALLY</h2>
+            <div class="forge-inner">
+                <div class="forge-text">
+                    <h3>OUR INCLUSION INITIATIVE</h3>
+                    <p>Forge Ally is an outreach initiative started by Cool Name Pending &mdash; bringing students who don't see themselves in STEM into robotics and the FIRST community. Girls, neurodivergent thinkers, and anyone who has never pictured themselves on a robotics team.</p>
+                    <p>Through interviews with engineers and industry leaders, community events, free workshops, and a growing social media presence, Forge Ally is making the FIRST community visible, accessible, and real for students who need to see themselves reflected in it.</p>
+                    <div class="forge-pillars">
+                        <div class="forge-pillar"><strong>STEM INTERVIEWS</strong><span>Weekly clips with engineers, researchers, and leaders</span></div>
+                        <div class="forge-pillar"><strong>FREE WORKSHOPS</strong><span>Hands-on STEM for students who wouldn't otherwise have access</span></div>
+                        <div class="forge-pillar"><strong>EVENTS</strong><span>On-the-ground outreach in our community</span></div>
+                        <div class="forge-pillar"><strong>KNOWLEDGE HUB</strong><span>50 free FTC lessons built by our team, open to anyone</span></div>
+                    </div>
+                    <a href="https://forge-ally.vercel.app" target="_blank" class="forge-link">VISIT FORGE ALLY</a>
+                </div>
+                <div class="forge-visual">
+                    <div class="forge-card">
+                        <div class="forge-card-label">INITIATIVE BY CNP #30439</div>
+                        <div class="forge-card-title">FORGE<br>YOUR<br>PATH.</div>
+                        <div class="forge-card-sub">Innovation happens when everyone is included. Robotics isn't just about building machines &mdash; it's about building opportunity.</div>
+                        <div class="forge-stats">
+                            <div class="forge-stat"><span class="forge-stat-num">40+</span><span class="forge-stat-lbl">Interviews Planned</span></div>
+                            <div class="forge-stat"><span class="forge-stat-num">50</span><span class="forge-stat-lbl">Free FTC Lessons</span></div>
+                            <div class="forge-stat"><span class="forge-stat-num">5</span><span class="forge-stat-lbl">Girls on the Team</span></div>
+                        </div>
+                        <a href="https://forge-ally.vercel.app" target="_blank" class="forge-link">LEARN MORE</a>
                     </div>
                 </div>
             </div>
@@ -430,7 +545,7 @@
             <div class="cta-buttons">
                 <a href="https://donorbox.org/sponsor-our-ftc-team-cool-name-pending" target="_blank" class="btn btn-primary">DONATE NOW</a>
                 <a href="https://leaphubeducation.org/volunteer" target="_blank" class="btn">VOLUNTEER</a>
-                <a href="mailto:info@leaphubeducation.org" class="btn">CONTACT US</a>
+                <a href="mailto:coolnamepending.ftc@leaphubeducation.org" class="btn">CONTACT US</a>
             </div>
         </div>
     </section>
@@ -451,14 +566,15 @@
                 <a href="#outreach">Outreach</a>
                 <a href="#robot">Robot</a>
                 <a href="#resources">Resources</a>
-                <a href="#join-vexiq">Join VexIQ</a>
+                <a href="#join-cnf">Join Cool Name Found</a>
+                <a href="#forge-ally">Forge Ally</a>
             </div>
             <div class="footer-section">
                 <h4>GET INVOLVED</h4>
                 <a href="https://donorbox.org/sponsor-our-ftc-team-cool-name-pending" target="_blank">Donate</a>
                 <a href="https://leaphubeducation.org/volunteer" target="_blank">Volunteer</a>
                 <a href="https://leaphubeducation.org/registration" target="_blank">Registration</a>
-                <a href="mailto:info@leaphubeducation.org">Contact</a>
+                <a href="mailto:coolnamepending.ftc@leaphubeducation.org">Contact</a>
             </div>
             <div class="footer-section">
                 <h4>CONTACT</h4>
@@ -477,6 +593,21 @@
     </footer>
 
     <script>
+        // Cursor glow
+        const glow = document.createElement('div');
+        glow.className = 'cursor-glow';
+        document.body.appendChild(glow);
+        document.addEventListener('mousemove', e => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Nav shrink
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.pageYOffset > 80);
+        });
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -484,25 +615,42 @@
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+        // Parallax brush
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const brushStroke = document.querySelector('.brush-stroke');
-            if (brushStroke) brushStroke.style.transform = `rotate(-5deg) translateY(${-10 + scrolled * 0.05}%)`;
+            const b = document.querySelector('.brush-stroke');
+            if (b) b.style.transform = `rotate(-5deg) translateY(${-10 + scrolled * 0.05}%)`;
         });
-        const observer = new IntersectionObserver((entries) => {
+
+        // Section title sweep
+        const titleObs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.section-title').forEach(el => titleObs.observe(el));
+
+        // Card stagger fade-up
+        const cards = document.querySelectorAll('.stat-box, .team-member, .outreach-card, .resource-card, .mission-card, .decode-box, .swot-box, .spec-item, .forge-pillar');
+        cards.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(36px)';
+        });
+        const cardObs = new IntersectionObserver(entries => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (!entry.isIntersecting) return;
+                const siblings = [...entry.target.parentElement.children];
+                const idx = siblings.indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.style.transition = 'opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease';
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                }
+                }, Math.min(idx * 70, 350));
+                cardObs.unobserve(entry.target);
             });
-        }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' });
-        document.querySelectorAll('.stat-box, .team-member, .outreach-card, .resource-card, .mission-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(50px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
+        }, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
+        cards.forEach(el => cardObs.observe(el));
+
+        // Portfolio fullscreen
         function openPortfolioFS() {
             document.getElementById('portfolioFS').classList.add('active');
             document.body.style.overflow = 'hidden';
